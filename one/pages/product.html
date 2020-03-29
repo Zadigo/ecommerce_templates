@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product</title>
+
+        <link rel="stylesheet" href="../../css/global/mat.css">
+        <link rel="stylesheet" href="../../css/ecommerce.css">
+        <link rel="stylesheet" href="../../css/ecommerce_nav.css">
+        <link rel="stylesheet" href="../../css/ecommerce_bars.css">
+        <link rel="stylesheet" href="../../css/product_grid.css">
+    </head>
+
+    <body>
+        
+        <main>
+            <div class="top-banner mobile-infos hide-on-med-and-up">
+                Livraison gratuite + retour 30 jours
+            </div>
+
+            <!-- HEADER -->
+            <header class="ecommerce-header">
+                <div class="fixed-ecommerce-nav" id="vue_navbar">
+                    <div class="ecommerce-nav">
+                        <a class="sidebar-menu">
+                            <i class="material-icons">menu</i>
+                        </a>
+                        <div class="brand-logo">
+                            <a href="http://">Nawoka</a>
+                        </div>
+                        <ul>
+                            <li><searchicontrigger /></li>
+                            <li><a href="./cart.html"><i class="material-icons">shopping_cart</i></a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <searchbar v-bind:searchstate="searchstate" />
+                    </div>
+                </div>
+                
+                <!-- ECOMMERCE BAR -->
+                <div class="ecommerce-bar hide-on-med-and-down">
+                    <div class="container">
+                        <ul>
+                            <li class="best-offers"><a href="./products1.html">Promotions</a></li>
+                            <li><a href="./products1.html">Sacs</a></li>
+                            <li><a href="./products1.html">Bracelets</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- BANNERS -->
+                <div class="top-banner sales-policies hide-on-med-and-down">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12 m4 l4">
+                                <i class="material-icons">flight</i>
+                                <p>Livraison gratuite</p>
+                            </div>
+                            <div class="col s12 m4 l4">
+                                <i class="material-icons">payment</i>
+                                <p>Paiements sécurisés</p>
+                            </div>
+                            <div class="col s12 m4 l4">
+                                <i class="material-icons">star</i>
+                                <p>Garantie 30 jours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROMOTION BANNER -->
+                <div class="top-banner promotional hide-on-med-and-down">
+                    <a href="./product.html">
+                        <div class=".wrapper">
+                            <div class="big-title">
+                                <img src="https://content.asos-media.com/-/media/homepages/unisex/homepages/outlet/app/2019-banners/desktop-mob/black_outlet_logo_desktop-v2.png" alt="image1">
+                            </div>
+                            <div class="presentation">
+                                Jusqu'à -15% sur tous les sacs
+                            </div>
+                            <div class="legal">
+                                Pour une durée limitée sur une sélection d’articles seulement. Prix déjà démarqués sur le site.
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </header>
+
+            <!-- MAIN -->
+            <div class="ecommerce" id="vue_grid">
+                <div class="grid" id="product">
+                    <!-- BREADCRUMBS -->
+                    <div class="breadcrumbs hide-on-med-and-down">
+                        <div><a href="http://">Accueil</a></div>
+                        <div><a href="http://">Collection</a></div>
+                        <div>Sac portée épaule</div>
+                    </div>
+                    
+                    <!-- SIDE IMAGES -->
+                    <div class="side-images">
+                        <sideimages v-bind:images="images" />
+                    </div>
+
+                    <!-- MAIN IMAGE -->
+                    <div class="main-image hide-on-med-and-down">
+                        <mainimage v-bind:image="selectedimage" v-bind:stockstate="product.outofstock" />
+                    </div>
+                    
+                    <!-- INFORMATION -->
+                    <div class="information">
+                        <h4>Bracelet en diamant pure</h4>
+
+                        <div class="infos">
+                            <div class="price hide">54.95€</div>
+                            <div class="price highlight">54.95€</div>
+                            <div class="discounted-price">54€</div>
+                        </div>
+
+                        <div class="delivery-and-return">
+                            <a href="#modal1" id="delivery-and-return" class="modal-trigger">
+                                Retours et livraisons gratuit**
+                            </a>
+
+                            <div id="modal1" class="modal" tabindex="0">
+                                <div class="modal-content">
+                                    <h4>Livraison</h4>
+                                    <table class="responsive-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Type</th>
+                                                <th>Quand ?</th>
+                                                <th>Combien ?</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><b>Standard</b></td>
+                                                <td>Livraison prévue avant ou pour le 21 April 2020</td>
+                                                <td>Gratuit</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="description">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                            Dignissimos labore vero sed, beatae, perferendis fuga 
+                            perspiciatis sunt soluta quo temporibus adipisci minus 
+                            rem id voluptas doloribus saepe! Totam, enim eius?
+                        </p>                        
+
+                        <div class="other-details">
+                            <div class="color"><span>Couleur :</span> Noir</span></div>
+                            <div class="size"><span>Taille :</span> Unique</div>
+
+                            <div class="selection">
+                                <colorselection />
+                            </div>
+                        </div>                        
+
+                        <div class="add-to-cart">
+                            <addtocart v-bind:product="product" />
+                        </div>
+                    </div>
+                    
+
+                    <!-- DETAILS -->
+                    <div class="details">
+                        Référence: 323ZEFZEF
+                        Matière: Similicuir - Façon similicuir
+                    </div>
+
+                    <!-- MORE -->
+                    <div class="more">
+                        <h4>Vous allez aussi aimer</h4>
+                        <div class="images">
+                            <div class="image">
+                                <a href="./product.html">
+                                    <img src="../../assets/images/image1.jpg" alt="image4">
+                                    <div class="details">
+                                        <div class="title">Jupe en cuir</div>
+                                        <div class="price">54€</div>
+                                    </div>                                
+                                </a>
+                            </div>
+                            <div class="image">
+                                <a href="./product.html">
+                                    <img src="../../assets/images/image2.jpg" alt="image4">
+                                    <div class="details">
+                                        <div class="price-details">
+                                            <div class="title">Jupe en velours</div>
+                                            <div class="price">54€</div>
+                                        </div>
+                                    </div>                                
+                                </a>
+                            </div>
+                            <div class="image">
+                                <a href="./product.html">
+                                    <img src="../../assets/images/image3.jpg" alt="image4">
+                                    <div class="details">
+                                        <div class="title">Sac de vuitton</div>
+                                        <div class="price">54€</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="image">
+                                <a href="./product.html">
+                                    <img src="../../assets/images/image1.jpg" alt="image4">
+                                    <div class="details">
+                                        <div class="title">Tote bag divaga</div>
+                                        <div class="price">54€</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="enhanced-minimalist-footer">
+                <div class="with-payments">
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                    <p><i class="material-icons">lock</i>Paiement sécurisés</p>
+                </div>
+            
+                <div class="with-social">
+                    <a href="https://www.instagram.com/nawoka_fashion/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/Nawoka-110244253694844/" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            
+                <div class="links white-text grey darken-4">
+                    <a href="./cgv.html">Conditions générales</a>
+                    <a href="./cgv.html">Confidentialité</a>
+                </div>
+            </div>
+            
+            <footer class="page-footer grey darken-4 with-policies hide">
+                <div class="policies">
+                    <div class="payments">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                    <div class="social">
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m4 l4">
+                            <h5>Aide et information</h5>
+                            <p><a href="./customer_service.html" target="_blank">Assistance</a></p>
+                            <p><a href="" target="_blank">Suivi commande</a></li></p>
+                            <p><a href="" target="_blank">Livraison retour</a></li></p>
+                        </div>
+
+                        <div class="col s12 m4 l4">
+                            <h5>A propos de Nawoka</h5>
+                            <p><a href="" target="_blank">A propos de Nawoka</a></p>
+                            <p><a href="" target="_blank">Nawoka recrute</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <p> 2019 @ Entreprise</p>
+                    <a href="{% url 'cgv' %}">Conditions générales</a>
+                    <a href="{% url 'confidentialite' %}">Confidentialité et cookies</a>
+                </div>
+            </footer>
+        </main>
+    </body>
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // Sidenav
+            $('.sidenav').sidenav();
+            // Scrollspy
+            $('.scrollspy').scrollSpy();
+            // Select
+            $('select').formSelect();
+            // Slider 
+            $('.slider').slider();
+            // Collapsible
+            $('.collapsible').collapsible();
+            // Modal
+            $('.modal').modal();
+        });
+    </script>
+
+    <!-- LODASH -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+    
+    <!-- VUE JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- OTHERS -->
+    <script src="../../js/nav.js"></script>
+    <script src="../../js/product.js"></script>
+</html>

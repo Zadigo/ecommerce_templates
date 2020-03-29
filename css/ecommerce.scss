@@ -1,0 +1,24 @@
+@import "./global/variables.scss";
+
+html {
+    font-family: "Lato", sans-serif;
+
+    @each $number in 3, 4, 5 {
+        h#{$number} {
+            font-family: "Oswald", sans-serif;
+        }
+    }
+
+    .presentation,
+    .infos, .price,
+    .add-to-cart,
+    .banner-out-of-stock {
+        font-family: $header_font;
+    }
+
+    .price-details {
+        .title {
+            font-family: $content_font;
+        }
+    }
+}

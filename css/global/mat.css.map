@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,OAAO,CAAC,qFAAI;AAEZ,OAAO,CAAC,4FAAI;AACZ,OAAO,CAAC,8DAAI;AAEZ,OAAO,CAAC,8DAAI",
+    "sources": [
+        "mat.scss"
+    ],
+    "names": [],
+    "file": "mat.css"
+}

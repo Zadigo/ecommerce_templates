@@ -1,0 +1,308 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Oswald:600,700&display=swap");
+.ecommerce .grid#product .information .delivery-and-return a, .ecommerce .grid#product .more .images .image a {
+  color: white;
+  cursor: pointer;
+}
+
+.ecommerce .grid#product .information .delivery-and-return a, .ecommerce .grid#product .more .images .image a {
+  color: black;
+}
+
+.ecommerce .grid#product .breadcrumbs, .ecommerce .grid#product .side-images, .ecommerce .grid#product .main-image, .ecommerce .grid#product .information, .ecommerce .grid#product .details, .ecommerce .grid#product .more, .ecommerce .grid#product .reviews {
+  padding: 1rem .45rem 1rem .45rem;
+}
+
+.ecommerce {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.ecommerce .grid#product {
+  display: -ms-grid;
+  display: grid;
+  grid-column-gap: 10px;
+}
+
+@media only screen and (min-width: 993px) {
+  .ecommerce .grid#product {
+    margin-top: 1rem;
+  }
+}
+
+@media only screen and (min-width: 301px) {
+  .ecommerce .grid#product {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: max-content min-content minmax(100px) 1fr;
+        grid-template-rows: -webkit-max-content -webkit-min-content minmax(100px) 1fr;
+        grid-template-rows: max-content min-content minmax(100px) 1fr;
+        grid-template-areas: "side-images" "information" "details" "more";
+    background-color: white;
+    grid-row-gap: 5px;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .ecommerce .grid#product {
+    -ms-grid-columns: 80px 400px (1fr)[3];
+        grid-template-columns: 80px 400px repeat(3, 1fr);
+        grid-template-areas: "breadcrumbs breadcrumbs breadcrumbs breadcrumbs breadcrumbs" "side-images main-image main-image information information" "details details details details details" "more more more more more";
+    background-color: white;
+  }
+}
+
+.ecommerce .grid#product .breadcrumbs {
+  grid-area: breadcrumbs;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-left: 0;
+  padding-right: 0;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.ecommerce .grid#product .breadcrumbs div:after {
+  margin-right: 1rem;
+  font-weight: 700;
+  padding: 56rem;
+}
+
+.ecommerce .grid#product .side-images {
+  grid-area: side-images;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all .4s ease-out;
+  transition: all .4s ease-out;
+  padding: 0;
+}
+
+@media only screen and (min-width: 301px) {
+  .ecommerce .grid#product .side-images {
+    min-height: 320px;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .ecommerce .grid#product .side-images {
+    width: 100%;
+  }
+}
+
+.ecommerce .grid#product .side-images img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media only screen and (min-width: 301px) {
+  .ecommerce .grid#product .side-images img {
+    position: absolute;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .ecommerce .grid#product .side-images img {
+    position: initial;
+    cursor: pointer;
+  }
+  .ecommerce .grid#product .side-images img:hover {
+    opacity: .7;
+  }
+  .ecommerce .grid#product .side-images img:not(:first-child) {
+    margin-top: .25rem;
+  }
+}
+
+.ecommerce .grid#product .main-image {
+  grid-area: main-image;
+  position: relative;
+  padding: 0;
+}
+
+.ecommerce .grid#product .main-image .banner-out-of-stock {
+  background-color: #fafafa;
+  padding: 1rem;
+  font-size: 22px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.ecommerce .grid#product .main-image .image {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.ecommerce .grid#product .main-image .image img {
+  width: 100%;
+}
+
+.ecommerce .grid#product .information {
+  grid-area: information;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.ecommerce .grid#product .information h3 {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+
+@media only screen and (min-width: 301px) {
+  .ecommerce .grid#product .information h3 {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .ecommerce .grid#product .information h3 {
+    font-size: 33px;
+  }
+}
+
+.ecommerce .grid#product .information h4 {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+
+@media only screen and (min-width: 301px) {
+  .ecommerce .grid#product .information h4 {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .ecommerce .grid#product .information h4 {
+    font-size: 33px;
+  }
+}
+
+.ecommerce .grid#product .information .infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+.ecommerce .grid#product .information .infos div:first-child {
+  margin-right: .75rem;
+}
+
+@media only screen and (min-width: 301px) {
+  .ecommerce .grid#product .information .infos .price {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .ecommerce .grid#product .information .infos .price {
+    font-size: 28px;
+  }
+}
+
+.ecommerce .grid#product .information .infos .price.highlight {
+  color: #c62828;
+}
+
+.ecommerce .grid#product .information .infos .discounted-price {
+  text-decoration: line-through;
+  font-family: "Lato", sans-serif;
+}
+
+.ecommerce .grid#product .information .delivery-and-return a {
+  text-decoration: underline;
+  font-weight: 300;
+}
+
+.ecommerce .grid#product .information .description {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ecommerce .grid#product .information .other-details {
+  margin-top: .75rem;
+  margin-bottom: .75rem;
+}
+
+.ecommerce .grid#product .information .other-details span {
+  font-family: "Oswald", sans-serif;
+}
+
+.ecommerce .grid#product .information .other-details select {
+  margin-top: 1.5rem;
+}
+
+.ecommerce .grid#product .details {
+  grid-area: details;
+}
+
+.ecommerce .grid#product .more {
+  grid-area: more;
+}
+
+.ecommerce .grid#product .more h4 {
+  text-align: center;
+}
+
+@media only screen and (min-width: 993px) {
+  .ecommerce .grid#product .more h4 {
+    font-size: 35px;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .ecommerce .grid#product .more h4 {
+    font-size: 45px;
+  }
+}
+
+.ecommerce .grid#product .more .images {
+  display: -ms-grid;
+  display: grid;
+}
+
+@media only screen and (min-width: 301px) {
+  .ecommerce .grid#product .more .images {
+    -ms-grid-rows: (min-content)[4];
+        grid-template-rows: repeat(4, -webkit-min-content);
+        grid-template-rows: repeat(4, min-content);
+    grid-row-gap: 5px;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .ecommerce .grid#product .more .images {
+    -ms-grid-columns: (200px)[4];
+        grid-template-columns: repeat(4, 200px);
+    -ms-grid-rows: 1fr;
+        grid-template-rows: 1fr;
+    grid-column-gap: 5px;
+  }
+}
+
+.ecommerce .grid#product .more .images .image {
+  overflow: hidden;
+}
+
+.ecommerce .grid#product .more .images .image img {
+  width: 100%;
+}
+
+.ecommerce .grid#product .reviews {
+  grid-area: rewiews;
+  background-color: navy;
+}
+/*# sourceMappingURL=product_grid.css.map */

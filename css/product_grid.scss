@@ -1,0 +1,288 @@
+@import "./global/variables.scss";
+
+$general_margin: 1.5rem;
+$regular_font_size: 18px;
+
+@function add_to_regular_size($n) {
+    @return $regular_font_size + $n
+}
+
+%area_property {
+    padding: 1rem .45rem 1rem .45rem;
+}
+
+.ecommerce {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+
+    .grid#product {
+        display: grid;
+        grid-column-gap: 10px;
+
+        @media only screen and (min-width: 993px) {
+            margin-top: 1rem;
+        }
+
+        @media only screen and (min-width: 301px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: max-content min-content minmax(100px) 1fr;
+            grid-template-areas: 
+            "side-images"
+            "information"
+            "details"
+            "more";
+            background-color: white;
+            grid-row-gap: 5px;
+        }
+
+        @media only screen and (min-width: 993px) {
+            grid-template-columns: 80px 400px repeat(3, 1fr);
+            grid-template-areas: 
+            "breadcrumbs breadcrumbs breadcrumbs breadcrumbs breadcrumbs"
+            "side-images main-image main-image information information"
+            "details details details details details"
+            "more more more more more";
+            background-color: white;
+        }
+
+        .breadcrumbs {
+            // background-color: blue;
+            @extend %area_property;
+            grid-area: breadcrumbs;
+            display: flex;
+            flex-direction: row;
+            padding: {
+                left: 0;
+                right: 0;
+            }
+            text-transform: uppercase;
+            font-size: 12px;
+
+            div {
+                &:before {
+                }
+    
+                &:after {
+                    margin-right: 1rem;
+                    font-weight: 700;
+                    padding: 56rem;
+                }
+            }
+        }
+    
+        .side-images {    
+            // background-color: yellow;
+            @extend %area_property;
+            grid-area: side-images;
+            position: relative;   
+            overflow: hidden;  
+            transition: all .4s ease-out;
+            padding: 0;
+
+            @media only screen and (min-width: 301px) {
+                min-height: 320px;
+            }
+
+            @media only screen and (min-width: 993px) {
+                // min-height: 100%;
+                width: 100%;
+            }
+            
+            img {
+                max-width: 100%;
+                height: auto;
+
+                @media only screen and (min-width: 301px) {
+                    position: absolute;
+                }
+                
+                @media only screen and (min-width: 993px) {
+                    position: initial;
+
+                    &:hover {
+                        opacity: .7;
+                    }
+
+                    &:not(:first-child) {
+                        margin-top: .25rem;
+                    }
+                    cursor: pointer;
+                }
+            }
+        }
+    
+        .main-image {    
+            // background-color: green;
+
+            @extend %area_property;
+            grid-area: main-image;
+            position: relative;
+            padding: 0;
+
+            .banner-out-of-stock {
+                background-color: $primary_grey;
+                padding: 1rem;
+                font-size: 22px;
+                text: {
+                    transform: uppercase;
+                    align: center;
+                }
+            }
+
+            .image {
+                overflow: hidden;
+                max-width: 100%;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    
+        .information {    
+            // background-color: violet;
+
+            @extend %area_property;
+            grid-area: information;
+            padding: {
+                top: 0;
+                bottom: 0;
+            }
+
+            @each $header in 3, 4 {
+                h#{$header} {
+                    margin: 0;
+                    font: {
+                        family: $content_font;
+                        weight: 300;
+                    }
+                    @media only screen and (min-width: 301px) {
+                        font-size: add_to_regular_size(10px);
+                    }
+                    
+                    @media only screen and (min-width: 993px) {
+                        font-size: add_to_regular_size(15px);
+                    }
+                }
+            }
+
+            .infos {
+                display: flex;
+                flex-direction: row;
+                justify-content: left;
+
+                div:first-child {
+                    margin-right: .75rem;
+                }
+
+                .price {
+                    @media only screen and (min-width: 301px) {
+                        font-size: add_to_regular_size(4px);
+                    }
+                    
+                    @media only screen and (min-width: 993px) {
+                        font-size: add_to_regular_size(10px);
+                    }
+
+
+                    &.highlight {
+                        color: $highlight_color;
+                    }
+                }
+
+                .discounted-price {
+                    text-decoration: line-through;
+                    font-family: $content_font;
+                }
+            }
+
+            .delivery-and-return {
+                a {
+                    @extend %black_links;
+                    text-decoration: underline;
+                    font-weight: 300;
+                }
+            }
+
+            .description {
+                margin: {
+                    top: 1.5rem;
+                    bottom: 1.5rem;
+                }
+            }
+
+            .other-details {
+                margin: {
+                    top: .75rem;
+                    bottom: .75rem;
+                }
+                span {
+                    font-family: $header_font;
+                }
+
+                select {
+                    margin-top: $general_margin;
+                }
+            }
+        }
+
+        .details {
+            // background-color: maroon;
+
+            @extend %area_property;
+            grid-area: details;
+        }
+    
+        .more {
+            // background-color: midnightblue;
+            @extend %area_property;
+            grid-area: more;
+
+            h4 {
+                text-align: center;
+
+                @media only screen and (min-width: 993px) {
+                    font-size: 35px;
+                }
+
+                @media only screen and (min-width: 993px) {
+                    font-size: 45px;
+                }
+            }
+
+            .images {
+                display: grid;
+
+                @media only screen and (min-width: 301px) {
+                    grid-template-rows: repeat(4, min-content);
+                    grid-row-gap: 5px;
+                }
+
+                @media only screen and (min-width: 993px) {
+                    grid-template-columns: repeat(4, 200px);
+                    grid-template-rows: 1fr;
+                    grid-column-gap: 5px;
+                }
+
+                .image {
+                    overflow: hidden;
+
+                    a {
+                        @extend %black_links;
+                    }
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    
+        .reviews {
+            @extend %area_property;
+            grid-area: rewiews;
+            background-color: navy;
+        }
+    }
+}
