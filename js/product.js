@@ -1,22 +1,36 @@
 var product = {
     images: [
-        {url: "../../assets/images/image1.jpg", name: "", selected: false, mainimage: true},
-        {url: "../../assets/images/image2.jpg", name: "", selected: false, mainimage: false},
-        {url: "../../assets/images/image3.jpg", name: "", selected: false, mainimage: false}
+        {url: "../../assets/images/image1.jpg", color: "Blue", name: "", selected: false, mainimage: true},
+        {url: "../../assets/images/image2.jpg", color: "Red", name: "", selected: false, mainimage: false},
+        {url: "../../assets/images/image3.jpg", color: "Green", name: "", selected: false, mainimage: false}
     ],
     outofstock: false
 }
 
 var colorselection = {
+    props: ["images"],
     template: "\
-    <select name='colors' class='browser-default' id='colors'>\
+    <select @change='docolor' v-model='selectedcolor' name='colors' class='browser-default' id='colors'>\
         <option v-for='color in colors' :key='color' :value='color'>{{ color }}</option>\
     </select>\
     ",
     data() {
         return {
-            colors: ["Red", "Blue", "Green"]
+            selectedcolor: "",
+            selectedimageurl: "",
+            colors: []
         }
+    },
+    mounted() {
+        var colors = []
+        _.forEach(this.$props.images, function(image) {
+            colors.push(image.color)
+        })
+        this.$data.colors = _.uniq(colors)
+        this.$data.selectedcolor = _.first(colors)
+    },
+    methods: {
+        docolor: function() {}
     }
 }
 
@@ -45,9 +59,7 @@ var addtocart = {
             var self = this
 
             // ANALYTICS
-            dataLayer.push({
-                // SOMETHING
-            })
+            dataLayer.push({})
 
             // FACEBOOK
 
@@ -59,8 +71,7 @@ var addtocart = {
                 data: {product: "product"},
                 dataType: "json",
                 success: function (response) {
-                    // DO SOMETHING
-                    // self.$emit("putincart", response)
+                    self.$emit("putincart", response)
                 }
             });
         }
@@ -83,7 +94,8 @@ var sideimages = {
     props: ["images"],
     template: "\
     <div>\
-        <img @click='selectimage(image)' :class='{selected: image.selected}' v-for='(image, index) in images' :key='index' :src='image.url' :alt='image.name'>\
+        <img @click='selectimage(image)' :class='{selected: image.selected}' \
+            v-for='(image, index) in images' :key='index' :src='image.url' :alt='image.name'>\
     </div>\
     ",
     methods: {

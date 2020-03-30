@@ -26,6 +26,59 @@
     }
 }
 
+.drop {
+    &-enter-active {
+        transition: all .3s ease-in;
+    }
+
+    &-enter {
+        opacity: 0;
+        transform: translateY(0px);
+    }
+
+    &-enter-to {
+        opacity: 1;
+        transform: translateY(-15px);
+    }
+
+    &-leave-active {
+        transition: all .3s ease-out;
+    }
+
+    &-leave {
+        opacity: 1;
+        transform: translateY(-15px);
+    }
+
+    &-leave-to {
+        opacity: 0;
+        transform: translateY(0px);
+    }
+}
+
+// .drop-enter-active {
+//     transition: all .3s ease-in;
+// }
+// .drop-enter {
+//     opacity: 0;
+//     transform: translateY(-10px);
+// }
+// .drop-enter-to {
+//     opacity: 1;
+//     transform: translateY(0px);
+// }
+// .drop-leave-active {
+//     transition: all .3s ease-in;
+// }
+// .drop-leave {
+//     opacity: 1;
+//     transform: translateY(10px);
+// }
+// .drop-leave-to {
+//     opacity: 0;
+//     transform: translateY(-10px);
+// }
+
 .ecommerce-bar {
     background-color: $secondary_color;
     z-index: -999;
@@ -129,18 +182,27 @@ $nav_height: 100px;
     color: black;
 
     .wrapper {
+        display: flex;
+        justify-content: space-between;
         margin: 0 auto;
-        width: 70%;
     }
     
     @media only screen and (min-width: 301px) {
         @include nav_height(50px);
         justify-content: space-evenly;
+
+        .wrapper {
+            width: 90%;
+        }
     }
     
     @media only screen and (min-width: 993px) {
         @include nav_height(100px);
         justify-content: space-between;
+
+        .wrapper {
+            width: 70%;
+        }
     }
 
     .sidebar-menu {
@@ -210,9 +272,9 @@ $nav_height: 100px;
         width: 100%;
         
         @media only screen and (min-width: 301px) {
-            top: 100px;
+            top: 50px;
             height: 200px;
-            opacity: .8;
+            opacity: 1;
         }
         
         @media only screen and (min-width: 993px) {

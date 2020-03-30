@@ -1,0 +1,28 @@
+{% block grid_id %}product{% endblock %}
+
+{% block grid %}
+    {% include "../components/breadcrumbs.html" with product_name=product.name %}
+    
+    <!-- SIDE IMAGES -->
+    {% include "../components/side_images.html" %}
+    
+    <!-- MAIN IMAGE -->
+    {% include "../components/main_image.html" %}
+        
+    <!-- INFORMATION -->
+    {% include "../components/informations/informations.html" %}
+
+    <!-- DETAILS -->
+    <div class="details">
+        Référence: {{ product.reference }}
+        Matière: Similicuir - Façon similicuir
+    </div>
+
+    <!-- MORE -->
+    {% include "../components/more.html" with section_title="Vous allez aussi aimer" %}
+{% endblock %}
+
+{% block extra_scripts %}
+    {{ product|json_script:"product" }}
+    <script src="{% static 'product.js' %}"></script>
+{% endblock %}

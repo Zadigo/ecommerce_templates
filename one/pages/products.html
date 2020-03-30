@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product</title>
+
+        <link rel="stylesheet" href="../../css/global/mat.css">
+        <link rel="stylesheet" href="../../css/ecommerce.css">
+        <link rel="stylesheet" href="../../css/ecommerce_nav.css">
+        <link rel="stylesheet" href="../../css/ecommerce_bars.css">
+        <link rel="stylesheet" href="../../css/products_grid.css">
+    </head>
+
+    <body>
+        
+        <main>
+            <div class="top-banner mobile-infos hide-on-med-and-up">
+                Livraison gratuite + retour 30 jours
+            </div>
+
+            <!-- HEADER -->
+            <header class="ecommerce-header">
+                <div class="fixed-ecommerce-nav" id="vue_navbar">
+                    <div class="ecommerce-nav">
+                        <div class="wrapper">
+                            <a href="#" data-target="slide-out" class="sidenav-trigger sidebar-menu hide-on-med-and-up">
+                                <i class="material-icons">menu</i>
+                            </a>
+                            <div class="brand-logo">
+                                <a href="./hero.html">Nawoka</a>
+                            </div>
+                            <ul>
+                                <li><searchicontrigger @triggerdropdown="initiatedropdown" /></li>
+                                <li><a href="./cart.html"><i class="material-icons">shopping_cart</i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <searchbar v-bind:searchstate="searchstate" />
+                    </div>
+                </div>
+                
+                <!-- ECOMMERCE BAR -->
+                <div class="ecommerce-bar hide-on-med-and-down">
+                    <div class="container">
+                        <ul>
+                            <li class="best-offers"><a href="./products.html">Promotions</a></li>
+                            <li><a href="./products.html">Sacs</a></li>
+                            <li><a href="./products.html">Bracelets</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- BANNERS -->
+                <div class="top-banner sales-policies hide-on-med-and-down">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12 m4 l4">
+                                <i class="material-icons">flight</i>
+                                <p>Livraison gratuite</p>
+                            </div>
+                            <div class="col s12 m4 l4">
+                                <i class="material-icons">payment</i>
+                                <p>Paiements sécurisés</p>
+                            </div>
+                            <div class="col s12 m4 l4">
+                                <i class="material-icons">star</i>
+                                <p>Garantie 30 jours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROMOTION BANNER -->
+                <div class="top-banner promotional hide-on-med-and-down hide">
+                    <a href="./product.html">
+                        <div class=".wrapper">
+                            <div class="big-title">
+                                <img src="https://content.asos-media.com/-/media/homepages/unisex/homepages/outlet/app/2019-banners/desktop-mob/black_outlet_logo_desktop-v2.png" alt="image1">
+                            </div>
+                            <div class="presentation">
+                                Jusqu'à -15% sur tous les sacs
+                            </div>
+                            <div class="legal">
+                                Pour une durée limitée sur une sélection d’articles seulement. Prix déjà démarqués sur le site.
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </header>
+
+            <!-- SIDENAV -->
+            <ul id="slide-out" class="sidenav">
+                <li><a href="#!">Accueil</a></li>
+                <li><a href="#!">Collections</a></li>
+            </ul>
+
+            <!-- MAIN -->
+            <div class="ecommerce" id="vue_products">
+                <!-- Product quantity -->
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <productcount v-bind:products="sortproducts" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12 m2 l2">
+                        <filterbar @filterprice="dosort" @updateproducts="dopreload" v-bind:showpreload="showpreload" />
+                    </div>
+                </div>
+                
+                <!-- GRID -->
+                <cards v-bind:products="sortproducts" v-bind:showpreload="showpreload" />
+            </div>
+
+            <!-- FOOTER -->
+            <div class="enhanced-minimalist-footer hide-on-med-and-up">
+                <div class="with-payments">
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                    <p><i class="material-icons">lock</i>Paiement sécurisés</p>
+                </div>
+            
+                <div class="with-social">
+                    <a href="https://www.instagram.com/nawoka_fashion/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/Nawoka-110244253694844/" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            
+                <div class="links white-text grey darken-4">
+                    <a href="./cgv.html">Conditions générales</a>
+                    <a href="./cgv.html">Confidentialité</a>
+                </div>
+            </div>
+            
+            <footer class="page-footer grey darken-4 with-policies hide-on-med-and-down">
+                <div class="policies">
+                    <div class="payments">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                    <div class="social">
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m4 l4">
+                            <h5>Aide et information</h5>
+                            <p><a href="./customer_service.html" target="_blank">Assistance</a></p>
+                            <p><a href="" target="_blank">Suivi commande</a></li></p>
+                            <p><a href="" target="_blank">Livraison retour</a></li></p>
+                        </div>
+
+                        <div class="col s12 m4 l4">
+                            <h5>A propos de Nawoka</h5>
+                            <p><a href="" target="_blank">A propos de Nawoka</a></p>
+                            <p><a href="" target="_blank">Nawoka recrute</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <p> 2019 @ Entreprise</p>
+                    <a href="{% url 'cgv' %}">Conditions générales</a>
+                    <a href="{% url 'confidentialite' %}">Confidentialité et cookies</a>
+                </div>
+            </footer>
+        </main>
+    </body>
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // Sidenav
+            $('.sidenav').sidenav();
+            // Scrollspy
+            $('.scrollspy').scrollSpy();
+            // Select
+            $('select').formSelect();
+            // Slider 
+            $('.slider').slider();
+            // Collapsible
+            $('.collapsible').collapsible();
+            // Modal
+            $('.modal').modal();
+        });
+    </script>
+
+    <!-- LODASH -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+    
+    <!-- VUE JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- OTHERS -->
+    <script src="../../js/nav.js"></script>
+    <script src="../../js/products.js"></script>
+</html>

@@ -1,0 +1,26 @@
+{% extends "product_base.html" %}
+
+{% block grid_id %}vue_products{% endblock %}
+
+{% block grid %}
+    <!-- QUANTITY -->
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <productcount v-bind:products="sortproducts" />
+        </div>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="row">
+        <div class="col s12 m2 l2">
+            <filterbar @filterprice="dosort" />
+        </div>
+    </div>
+    
+    <!-- GRID -->
+    <cards v-bind:products="sortproducts" />
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="products.js"></script>
+{% endblock %}

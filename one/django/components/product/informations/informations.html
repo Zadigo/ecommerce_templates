@@ -1,0 +1,26 @@
+<div class="information">
+    <h4>{{ product.name }}</h4>
+
+    <div class="infos">
+        <div class="price hide">{{ product.price }}</div>
+        <div class="price highlight">{{ product.discount_price }}</div>
+        <div class="discounted-price">{{ product.discount_price }}</div>
+    </div>
+
+    {% include "./delivery_return.html" with delivery_date=delivery_date %}
+
+    <p class="description">{{ product.description }}</p>
+
+    <div class="other-details">
+        <div class="color"><span>Couleur :</span>{{ product.color }}</div>
+        <div class="size"><span>Taille :</span> Unique</div>
+
+        <div class="selection">
+            <colorselection v-bind:images="product.images" />
+        </div>
+    </div>                        
+
+    <div class="add-to-cart">
+        <addtocart v-bind:product="product" />
+    </div>
+</div>

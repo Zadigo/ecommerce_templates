@@ -27,10 +27,10 @@
                             <i class="material-icons">menu</i>
                         </a>
                         <div class="brand-logo">
-                            <a href="http://">Nawoka</a>
+                            <a href="./hero.html">Nawoka</a>
                         </div>
                         <ul>
-                            <li><searchicontrigger /></li>
+                            <li><searchicontrigger @triggerdropdown="initiatedropdown" /></li>
                             <li><a href="./cart.html"><i class="material-icons">shopping_cart</i></a></li>
                         </ul>
                     </div>
@@ -44,9 +44,9 @@
                 <div class="ecommerce-bar hide-on-med-and-down">
                     <div class="container">
                         <ul>
-                            <li class="best-offers"><a href="./products1.html">Promotions</a></li>
-                            <li><a href="./products1.html">Sacs</a></li>
-                            <li><a href="./products1.html">Bracelets</a></li>
+                            <li class="best-offers"><a href="./products.html">Promotions</a></li>
+                            <li><a href="./products.html">Sacs</a></li>
+                            <li><a href="./products.html">Bracelets</a></li>
                         </ul>
                     </div>
                 </div>
@@ -159,7 +159,7 @@
                             <div class="size"><span>Taille :</span> Unique</div>
 
                             <div class="selection">
-                                <colorselection />
+                                <colorselection v-bind:images="product.images" />
                             </div>
                         </div>                        
 
@@ -223,7 +223,7 @@
             </div>
 
             <!-- FOOTER -->
-            <div class="enhanced-minimalist-footer">
+            <div class="enhanced-minimalist-footer hide-on-med-and-up">
                 <div class="with-payments">
                     <div class="payment-methods">
                         <i class="fab fa-cc-visa"></i>
@@ -247,7 +247,7 @@
                 </div>
             </div>
             
-            <footer class="page-footer grey darken-4 with-policies hide">
+            <footer class="page-footer grey darken-4 with-policies hide-on-med-and-down">
                 <div class="policies">
                     <div class="payments">
                         <i class="fab fa-cc-visa"></i>

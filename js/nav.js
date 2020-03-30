@@ -13,7 +13,7 @@ var trigger2 = {
 
 var searchicontrigger = {
     template: "\
-    <a @click='triggerdropdown'>\
+    <a @click.stop='triggerdropdown'>\
         <i class='material-icons'>search</i>\
     </a>\
     ",
@@ -45,8 +45,7 @@ var searchbar = {
         dosearch: function() {
             $.ajax({
                 type: "GET",
-                url: window.location.href = "/products1.html",
-                dataType: "json",
+                url: window.location.href = "/search.html",
                 success: function (response) {
                     
                 }
@@ -90,7 +89,7 @@ var dropdownbar = {
 
 var navbar = new Vue({
     el: "#vue_navbar",
-    components: {dropdownbar, searchbar, searchicontrigger, trigger2},
+    components: {dropdownbar, searchbar, searchicontrigger},
     data() {
         return {
             searchstate: false,
@@ -100,7 +99,7 @@ var navbar = new Vue({
     methods: {
         initiatedropdown: function(name) {
             if (name === "search") {
-                setInterval(function() {$("#search").focus()}, 500)
+                // setInterval(function() {$("#search").focus()}, 500)
                 this.$data.dropdownstate = false
                 this.$data.searchstate = !this.$data.searchstate
             }

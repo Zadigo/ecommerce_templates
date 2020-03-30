@@ -1,0 +1,16 @@
+<div class="more">
+    <h4>{{ section_title }}</h4>
+    <div class="images">
+        {% for product in more_products %}
+            <div class="image">
+                <a href="{% url 'product' a b %}">
+                    <img src="{{ product.image_url }}" alt="{{ product.slug }}">
+                    <div class="details">
+                        <div class="title">{{ product.name }}</div>
+                        <div class="price">{{ product.price }}</div>
+                    </div>                                
+                </a>
+            </div>            
+        {% endfor %}
+    </div>
+</div>
