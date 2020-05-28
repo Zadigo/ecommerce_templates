@@ -1,13 +1,10 @@
 @import "../css/global/variables.scss";
 
-$base_banner_color: #42a5f5;
-$base_promotional_banner_color: #00897b;
-
 %simple_banner {
     position: relative;
     top: 0;
     height: 50px;
-    color: white;
+    color: $primary_white;
     background: {
         color: $base_banner_color;
     }
@@ -15,12 +12,13 @@ $base_promotional_banner_color: #00897b;
 
 %banner {
     @extend %simple_banner;
+
     height: auto;
     text-align: center;
-    font: {
-        size: 32px;
-        weight: 700;
-    }
+    // font: {
+    //     size: 32px;
+    //     weight: 700;
+    // }
     padding: 2rem;
     background: {
         position: center;
@@ -34,10 +32,11 @@ $base_promotional_banner_color: #00897b;
 
     &.mobile-infos {
         @extend %simple_banner;
+
         text-align: center;
         padding: .45rem;
         line-height: 40px;
-        font-weight: 400;
+        // font-weight: 400;
     }
 
     &.sales-policies {
@@ -72,15 +71,15 @@ $base_promotional_banner_color: #00897b;
         top: 0;
         height: auto;
         text-align: center;
-        font-size: 32px;
-        font-weight: 700;
+        // font-size: 32px;
+        // font-weight: 700;
         padding: 2rem;
         background-color: $base_promotional_banner_color;
 
         &.smaller {
             padding: .75rem;
-            font-size: 1rem;
-            color: white;
+            // font-size: 1rem;
+            // color: $primary_white;
         }
 
         a {
@@ -96,9 +95,11 @@ $base_promotional_banner_color: #00897b;
             }
     
             .legal {
-                font-size: .75rem;
                 padding: .25rem;
-                font-weight: 400;
+                // font: {
+                //     size: .75rem;
+                //     weight: 400;
+                // }
             }
         }
     }

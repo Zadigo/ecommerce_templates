@@ -1,0 +1,28 @@
+.grid#customer-care {
+    transition: all .4s ease;
+
+    .care-choice {
+        .choice {
+            padding: 1rem;
+            border: 1px solid black;
+            text-align: center;
+            cursor: pointer;
+            
+            &:not(:last-child) {
+               margin-bottom: .25rem;
+            }
+
+            &:hover {
+                background-color: grey;
+            }
+        }
+    }
+
+    .contact-fields {
+        textarea {
+            height: 100px;
+            padding: .5rem;
+            resize: none;
+        }
+    }
+}

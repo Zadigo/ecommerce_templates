@@ -1,29 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Oswald:600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,500&display=swap");
 html {
-  font-family: "Lato", sans-serif;
+  font-family: "Lato";
 }
 
-html h3 {
-  font-family: "Oswald", sans-serif;
-}
-
-html h4 {
-  font-family: "Oswald", sans-serif;
-}
-
-html h5 {
-  font-family: "Oswald", sans-serif;
-}
-
-html .presentation,
-html .infos, html .price,
-html .add-to-cart,
-html .banner-out-of-stock {
-  font-family: "Oswald", sans-serif;
-}
-
-html .price-details .title {
-  font-family: "Lato", sans-serif;
+html {
+  font-size: 14px;
 }
 /*# sourceMappingURL=ecommerce.css.map */

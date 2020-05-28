@@ -9,7 +9,8 @@
         <link rel="stylesheet" href="../../css/ecommerce.css">
         <link rel="stylesheet" href="../../css/ecommerce_nav.css">
         <link rel="stylesheet" href="../../css/ecommerce_bars.css">
-        <link rel="stylesheet" href="../../css/products_grid.css">
+        <link rel="stylesheet" href="../../css/product_grid.css">
+        <link rel="stylesheet" href="../../css/customer_care.css">
     </head>
 
     <body>
@@ -36,7 +37,7 @@
                             </ul>
                         </div>
                     </div>
-
+                    
                     <div>
                         <searchbar v-bind:searchstate="searchstate" />
                     </div>
@@ -44,12 +45,17 @@
                 
                 <!-- ECOMMERCE BAR -->
                 <div class="ecommerce-bar hide-on-med-and-down">
-                    <div class="container">
-                        <ul>
-                            <li class="best-offers"><a href="./products.html">Promotions</a></li>
-                            <li><a href="./products.html">Sacs</a></li>
-                            <li><a href="./products.html">Bracelets</a></li>
-                        </ul>
+                    <div id="vue_ecommerce_bar">
+                        <div class="container">
+                            <ul>
+                                <li class="best-offers"><a href="./products.html">Promotions</a></li>
+                                <li><a href="./products.html">Sacs</a></li>
+                                <li><a href="./products.html">Bracelets</a></li>
+                                <li><a href="./products.html">Chaussures</a></li>
+                                <li><trigger1 @triggerdropdown="initiatedropdown" /></li>
+                            </ul>
+                        </div>
+                        <dropdownbar v-bind:dropdownstate="dropdownstate" />
                     </div>
                 </div>
 
@@ -97,48 +103,43 @@
                 <li><a href="#!">Collections</a></li>
             </ul>
 
-            <!-- MAIN -->
-            <div class="ecommerce" id="vue_products">
-                <!-- PRESENTATION -->
-                <div class="row">
-                    <div class="col s12 m12 l12">
-                        <div class="page-presentation-card blue lighten-4">
-                            <h4>Robes</h4>
-                            <p>
-                                Qui n’a pas besoin d’une petite robe ? Cette saison, restez toujours au top de la tendance grâce à 
-                                notre gamme de robes femme à petits prix. Jetez un œil à notre sélection et craquez pour nos robes du 
-                                moments super trendy. Des robes de soirée ultra glam’ et sophistiquées qui mettront votre silhouette en valeur, 
-                                aux petites robes basiques au look décontracté et chic, vous trouverez forcément ce que vous cherchez. 
-                                Laissez-vous tenter par la multitude de styles et de découpes et vous ne passerez plus jamais inaperçue 
-                                que vous soyez en soirée ou au bureau. Quelle que soit l’occasion, nous avons pensé à tout. 
-                                Vous nous remercierez plus tard !
-                            </p>
+            <div class="ecommerce" id="vue_grid">
+                <div class="grid" id="customer-care">
+                    <div class="row center">
+                        <h4>Contactez-nous</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m6 l6 offset-m3 offset-l3">
+                            <div class="card-panel care-choice">
+                                <div class="choices">
+                                    <div class="choice">
+                                        Erreur dans la livraison
+                                    </div>
+                                    <div class="choice">
+                                        Item in the basket
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m8 l8">
+                            <div class="card-panel contact-fields">
+                                <div class="row">
+                                    <div class="input-field">
+                                        <input type="text" name="ordernumber" id="ordernumber" placeholder="Numéro de commande">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field">
+                                        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                                    </div>
+                                    <button class="btn-large"><i class="material-icons left">email</i>Envoyer</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- QUANTITY -->
-                <div class="row">
-                    <div class="col s12 m12 l12">
-                        <productcount v-bind:products="sortproducts" />
-                    </div>
-                </div>
-                
-                <!-- FILTERS -->
-                <div class="row filters-bar">
-                    <div class="col s12 m2 l2">
-                        <filterbar @filterprice="dosort" @updateproducts="dopreload" v-bind:showpreload="showpreload" />
-                    </div>
-                    <div class="col s12 m2 l2">
-                        <productbycolor @filterbycolor="dofilterbycolor" v-bind:products="products" />
-                    </div>
-                    <div class="col s12 m2 l2">
-                        <changegrid />
-                    </div>
-                </div>
-                
-                <!-- GRID -->
-                <cards v-bind:products="listproducts" v-bind:showpreload="showpreload" />
             </div>
 
             <!-- FOOTER -->
@@ -231,7 +232,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <!-- OTHERS -->
-    <script src="../../js/variables.js"></script>
+    <script src="../../js/bar.js"></script>
     <script src="../../js/nav.js"></script>
-    <script src="../../js/products.js"></script>
+    <script src="../../js/product.js"></script>
 </html>

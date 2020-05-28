@@ -8,8 +8,11 @@
         <link rel="stylesheet" href="../../css/global/mat.css">
         <link rel="stylesheet" href="../../css/ecommerce.css">
         <link rel="stylesheet" href="../../css/ecommerce_nav.css">
-        <link rel="stylesheet" href="../../css/ecommerce_bars.css">
+        <link rel="stylesheet" href="../../css/ecommerce_banners.css">
         <link rel="stylesheet" href="../../css/product_grid.css">
+        <!-- <link rel="stylesheet" href="../../css/admin-overlay.css"> -->
+        <!-- ZOOM -->
+        <link rel="stylesheet" href="../../css/jquery.wm-zoom-1.0.css">
     </head>
 
     <body>
@@ -22,32 +25,70 @@
             <!-- HEADER -->
             <header class="ecommerce-header">
                 <div class="fixed-ecommerce-nav" id="vue_navbar">
-                    <div class="ecommerce-nav">
-                        <a class="sidebar-menu">
-                            <i class="material-icons">menu</i>
-                        </a>
-                        <div class="brand-logo">
-                            <a href="./hero.html">Nawoka</a>
+                    <div class="ecommerce-nav hide">
+                        <div class="wrapper">
+                            <a href="#" data-target="slide-out" class="sidenav-trigger sidebar-menu hide-on-med-and-up">
+                                <i class="material-icons">menu</i>
+                            </a>
+                            <div class="brand-logo">
+                                <a href="./hero.html">Nawoka</a>
+                            </div>
+                            <ul>
+                                <li><searchicontrigger @triggerdropdown="initiatedropdown" /></li>
+                                <li><a href="./cart.html"><i class="material-icons">shopping_cart</i></a></li>
+                            </ul>
                         </div>
-                        <ul>
-                            <li><searchicontrigger @triggerdropdown="initiatedropdown" /></li>
-                            <li><a href="./cart.html"><i class="material-icons">shopping_cart</i></a></li>
-                        </ul>
                     </div>
 
+                    <nav class="white">
+                        <div class="container">
+                            <div class="nav-wrapper">
+                                <a href="#" class="brand-logo">Nawoka</a>
+    
+                                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                                    <li>
+                                        <a href="sass.html">
+                                            <i class="material-icons">search</i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="badges.html">
+                                            <i class="material-icons">shopping_cart</i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="collapsible.html">
+                                            <i class="material-icons">dashboard</i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    
                     <div>
                         <searchbar v-bind:searchstate="searchstate" />
                     </div>
                 </div>
                 
+                <!-- CART DRAWER -->
+                <div id="vue_drawer">
+                    <cartdrawer v-bind:cart="cart" v-bind:globalvariables=globalvariables />
+                </div>
+                
                 <!-- ECOMMERCE BAR -->
                 <div class="ecommerce-bar hide-on-med-and-down">
-                    <div class="container">
-                        <ul>
-                            <li class="best-offers"><a href="./products.html">Promotions</a></li>
-                            <li><a href="./products.html">Sacs</a></li>
-                            <li><a href="./products.html">Bracelets</a></li>
-                        </ul>
+                    <div id="vue_ecommerce_bar">
+                        <div class="container">
+                            <ul>
+                                <li class="best-offers"><a href="./products.html">Promotions</a></li>
+                                <li><a href="./products.html">Sacs</a></li>
+                                <li><a href="./products.html">Bracelets</a></li>
+                                <li><a href="./products.html">Chaussures</a></li>
+                                <li><trigger1 @triggerdropdown="initiatedropdown" /></li>
+                            </ul>
+                        </div>
+                        <dropdownbar v-bind:dropdownstate="dropdownstate" />
                     </div>
                 </div>
 
@@ -72,7 +113,7 @@
                 </div>
 
                 <!-- PROMOTION BANNER -->
-                <div class="top-banner promotional hide-on-med-and-down">
+                <div class="top-banner promotional hide-on-med-and-down hide">
                     <a href="./product.html">
                         <div class=".wrapper">
                             <div class="big-title">
@@ -88,6 +129,20 @@
                     </a>
                 </div>
             </header>
+
+            <!-- SIDENAV -->
+            <ul id="slide-out" class="sidenav">
+                <li><a href="#!">Accueil</a></li>
+                <li><a href="#!">Collections</a></li>
+            </ul>
+
+            <!-- BACKGROUND OVERLAY -->
+            <div class="overlay hide"></div>
+
+            <!-- ADMIN OVERLAY -->
+            <div class="admin-overlay hide">
+                <div id="admin"></div>
+            </div>
 
             <!-- MAIN -->
             <div class="ecommerce" id="vue_grid">
@@ -111,7 +166,7 @@
                     
                     <!-- INFORMATION -->
                     <div class="information">
-                        <h4>Bracelet en diamant pure</h4>
+                        <h4 class="product-title">Bracelet en diamant pure</h4>
 
                         <div class="infos">
                             <div class="price hide">54.95€</div>
@@ -147,78 +202,133 @@
                             </div>
                         </div>
 
-                        <p class="description">
+                        <p class="description hide">
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
                             Dignissimos labore vero sed, beatae, perferendis fuga 
                             perspiciatis sunt soluta quo temporibus adipisci minus 
                             rem id voluptas doloribus saepe! Totam, enim eius?
-                        </p>                        
-
+                        </p>
+                        
+                        <div class="description-box">
+                            <descriptionbox />
+                        </div>
+                        
+                        <!-- SELECTIONS -->
                         <div class="other-details">
-                            <div class="color"><span>Couleur :</span> Noir</span></div>
-                            <div class="size"><span>Taille :</span> Unique</div>
+                            <!-- <div>
+                                <colortext v-bind:colors="colors" />
+                            </div> -->
+                            <!-- <div class="size"><span>Taille :</span> Unique</div> -->
 
                             <div class="selection">
-                                <colorselection v-bind:images="product.images" />
+                                <div class="color">
+                                    <colorselection @docolor="updateuserselection" v-bind:images="product.images" />
+                                </div>
+                                
+                                <div class="size">
+                                    <colorselection v-bind:images="product.images" />
+                                </div>
                             </div>
-                        </div>                        
+                        </div>
+                        
+                        <div class="size-guide">
+                            <a href="#modal2" id="delivery-and-return" class="modal-trigger">
+                                Guide des tailles**
+                            </a>
+
+                            <div id="modal2" class="modal" tabindex="0">
+                                <div class="modal-content">
+                                    <h4>Guide des tailles</h4>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="add-to-cart">
-                            <addtocart v-bind:product="product" />
+                            <div class="items">
+                                <!-- BUTTON -->
+                                <div>
+                                    <addtocart v-bind:product="product" v-bind:image="mainimageurl[0]['image_url']" />
+                                </div>
+    
+                                <!-- LIKE -->
+                                <div>
+                                    <likebutton />
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
 
                     <!-- DETAILS -->
-                    <div class="details">
-                        Référence: 323ZEFZEF
-                        Matière: Similicuir - Façon similicuir
+                    <div class="details hide">
+                        <div class="detail">
+                            <div class="title">Référence</div>
+                            <div class="content">323ZEFZEF</div>
+                        </div>
+                        <div class="detail">
+                            <div class="title">Matière</div>
+                            <div class="content">Similicuir - Façon similicuir</div>
+                        </div>
                     </div>
 
                     <!-- MORE -->
-                    <div class="more">
+                    <div class="more grey lighten-4">
                         <h4>Vous allez aussi aimer</h4>
-                        <div class="images">
-                            <div class="image">
-                                <a href="./product.html">
-                                    <img src="../../assets/images/image1.jpg" alt="image4">
-                                    <div class="details">
-                                        <div class="title">Jupe en cuir</div>
-                                        <div class="price">54€</div>
-                                    </div>                                
-                                </a>
-                            </div>
-                            <div class="image">
-                                <a href="./product.html">
-                                    <img src="../../assets/images/image2.jpg" alt="image4">
-                                    <div class="details">
-                                        <div class="price-details">
-                                            <div class="title">Jupe en velours</div>
+                        <div class="wrapper">
+                            <div class="images">
+                                <div class="image">
+                                    <a href="./product.html">
+                                        <img src="../../assets/images/image1.jpg" alt="image4">
+                                        <div class="details">
+                                            <div class="title">Jupe en cuir</div>
+                                            <div class="infos">
+                                                <div class="price highlight">54€</div>
+                                                <div class="discounted-price">54€</div>
+                                            </div>
+                                        </div>                                
+                                    </a>
+                                </div>
+                                <div class="image">
+                                    <a href="./product.html">
+                                        <img src="../../assets/images/image2.jpg" alt="image4">
+                                        <div class="details">
+                                            <div class="price-details">
+                                                <div class="title">Jupe en velours</div>
+                                                <div class="price">54€</div>
+                                            </div>
+                                        </div>                                
+                                    </a>
+                                </div>
+                                <div class="image">
+                                    <a href="./product.html">
+                                        <img src="../../assets/images/image3.jpg" alt="image4">
+                                        <div class="details">
+                                            <div class="title">Sac de vuitton</div>
                                             <div class="price">54€</div>
                                         </div>
-                                    </div>                                
-                                </a>
-                            </div>
-                            <div class="image">
-                                <a href="./product.html">
-                                    <img src="../../assets/images/image3.jpg" alt="image4">
-                                    <div class="details">
-                                        <div class="title">Sac de vuitton</div>
-                                        <div class="price">54€</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="image">
-                                <a href="./product.html">
-                                    <img src="../../assets/images/image1.jpg" alt="image4">
-                                    <div class="details">
-                                        <div class="title">Tote bag divaga</div>
-                                        <div class="price">54€</div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
+                                <div class="image">
+                                    <a href="./product.html">
+                                        <img src="../../assets/images/image1.jpg" alt="image4">
+                                        <div class="details">
+                                            <div class="title">Tote bag divaga</div>
+                                            <div class="price">54€</div>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div id="admin_components">
+                <div>
+                    <actionbuttons @showmodal="domodal" v-bind:actions="actions" />
+                </div>
+                <div>
+                    <!-- <modalcomponent v-bind:modalname="modalname" /> -->
                 </div>
             </div>
 
@@ -288,6 +398,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
+    <!-- ZOOM -->
+    <!-- <script src="../../css/jquery.wm-zoom-1.0.js"></script> -->
+
     <script>
         $(document).ready(function(){
             // Sidenav
@@ -302,6 +415,28 @@
             $('.collapsible').collapsible();
             // Modal
             $('.modal').modal();
+            // Tooltips
+            $('.tooltipped').tooltip();
+            // Action buttons
+            $('.fixed-action-btn').floatingActionButton();
+
+            // ZOOM
+            // $(".my-zoom").WMZoom({
+            //     config: {
+            //         // stage size
+            //         stageW: 500,
+            //         stageH: 400,
+                    
+            //         // set to true to enable the inner zoom mode
+            //         inner: false,
+                    
+            //         // [top, right, bottom, left]
+            //         position: "right",
+                    
+            //         // margin
+            //         margin : 10
+            //     }
+            // });
         });
     </script>
 
@@ -312,6 +447,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <!-- OTHERS -->
+    <script src="../../js/variables.js"></script>
+    <script src="../../js/admin_components.js"></script>
+    <script src="../../js/bar.js"></script>
     <script src="../../js/nav.js"></script>
     <script src="../../js/product.js"></script>
+    <script src="../../js/admin_overlay.js"></script>
 </html>
