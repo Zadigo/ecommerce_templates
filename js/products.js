@@ -1,60 +1,24 @@
-// PRODUCTS
-
-var products = [
-    { 
-        id: 1, 
-        name: "Jupe de soie",
-        exclusive: true,
-        discount_price: 46,
-        discount_pct: 25,
-        price_ht: 151,
-        color: "brown",
-        slug: "jupe-de-soie",
-        images: [{ "main_image": true, image_url: "../../assets/images/image1.jpg" }] 
-    },
-    { 
-        id: 2,
-        name: "Jupe de coton",
-        exclusive: false,
-        discount_pct: 0,
-        price_ht: 0,
-        price_ht: 106,
-        color: "black",
-        images: [{ "main_image": true, image_url: "../../assets/images/image3.jpg" }] 
-    },
-    { 
-        id: 3,
-        name: "Jupe en cardigan",
-        exclusive: false,
-        discount_pct: 0,
-        price_ht: 0,
-        price_ht: 450,
-        color: "red",
-        images: [{ "main_image": true, image_url: "../../assets/images/image2.jpg" }] 
-    },
-    { 
-        id: 4,
-        name: "Jupe de polen",
-        exclusive: true,
-        discount_pct: 0,
-        price_ht: 0,
-        price_ht: 753,
-        color: "red",
-        images: [{ "main_image": true, image_url: "../../assets/images/image2.jpg" }] 
-    },
-    { 
-        id: 5,
-        name: "Jupe de végétal",
-        exclusive: false,
-        discount_pct: 0,
-        price_ht: 0,
-        price_ht: 150,
-        color: "brown",
-        images: [{ "main_image": true, image_url: "../../assets/images/image3.jpg" }] 
-    },
-]
-
 // VUE
+
+var changegrid = {
+    template: "\
+    <div class='change-grid'>\
+        <i v-if='viewcomfy' @click='changegrid' class='material-icons'>view_module</i>\
+        <i v-else @click='changegrid' class='material-icons'>view_comfy</i>\
+    </div>\
+    ",
+    data() {
+        return {
+            viewcomfy: true
+        }
+    },
+    methods: {
+        changegrid: function() {
+            this.$data.viewcomfy = !this.$data.viewcomfy
+            $(".ecommerce").find("#products").toggleClass("comfy")
+        }
+    }
+}
 
 var productcount = {
     props: ["products"],
@@ -62,6 +26,43 @@ var productcount = {
     computed: {
         n() {
             return this.$props.products.length
+        }
+    }
+}
+
+var productbycolor = {
+    props: ["products"],
+    template: "\
+    <div class='wrapper'>\
+        <select @change='filterbycolor' v-model='selectedelement' \
+                    class='browser-default' id='filterprice'>\
+            <option v-for='option in options' :key='option.name' \
+                    :value='option.value'>{{ option.name }}</option>\
+        </select>\
+    </div>\
+    ",
+    data() {
+        return {
+            selectedelement: "initial",
+            options: [
+                {name: "------", value: "initial"},
+                {name: "Marron", value: "Marron"},
+                {name: "Rose", value: "Rose"},
+                {name: "Noir", value: "Noir"},
+                {name: "Bordeau", value: "Bordeau"}
+            ],
+            images: []
+        }
+    },
+    beforeMount() {
+        var self = this
+        self.$props.products.forEach(product => {
+            self.$data.options.push(product)
+        })
+    },
+    methods: {
+        filterbycolor: function(color) {
+            this.$emit("filterbycolor", this.$data.selectedelement)
         }
     }
 }
@@ -199,11 +200,11 @@ var cards = {
 
 var products = new Vue({
     el: "#vue_products",
-    components: {cards, filterbar, productcount},
+    components: {cards, filterbar, productcount, productbycolor, changegrid},
     data() {
         return {
             products: [],
-            productfilters: {priceorder: "initial"},
+            productfilters: {priceorder: "initial", color: "initial"},
             showpreload: false
         }
     },
@@ -225,11 +226,26 @@ var products = new Vue({
     },
     computed: {
         listproducts() {
-            return this.$data.products
+            var products = this.$data.products
+            if (products.length == 0) {
+                return products
+            }
+            return this.sortproductsbycolor
+        },
+        sortproductsbycolor() {
+            var self = this
+            var products = self.sortproducts
+            if (self.$data.productfilters["color"] === "initial") {
+                return products
+            }
+            return products.filter(product => {
+                var image = _.first(product.images)
+                return image.variant === self.$data.productfilters["color"]
+            })
         },
         sortproducts() {
             var self = this
-            var copiedproducts = [...this.listproducts]
+            var copiedproducts = [...this.$data.products]
 
             if (self.$data.productfilters.priceorder === "initial") {
                 return self.$data.products
@@ -261,6 +277,9 @@ var products = new Vue({
         }
     },
     methods: {
+        dofilterbycolor: function(color) {
+            this.$data.productfilters["color"] = color
+        },
         dosort: function(value, method) {
             if (value === "priceorder") {
                 this.$data.productfilters["priceorder"] = method

@@ -1,0 +1,26 @@
+.grid#customer-care {
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+}
+
+.grid#customer-care .care-choice .choice {
+  padding: 1rem;
+  border: 1px solid black;
+  text-align: center;
+  cursor: pointer;
+}
+
+.grid#customer-care .care-choice .choice:not(:last-child) {
+  margin-bottom: .25rem;
+}
+
+.grid#customer-care .care-choice .choice:hover {
+  background-color: grey;
+}
+
+.grid#customer-care .contact-fields textarea {
+  height: 100px;
+  padding: .5rem;
+  resize: none;
+}
+/*# sourceMappingURL=customer_care.css.map */

@@ -1,0 +1,50 @@
+%box {
+    position: absolute;
+    width: auto;
+
+}
+
+.admin-overlay {
+    .wrapper {
+        background-color: rgba($color: black, $alpha: .1);
+        // background-color: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        z-index: 9999;
+
+        .panel-title {
+            // color: white;
+            font-weight: 600;
+            padding: 1rem;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+    
+        .close-button {
+            position: absolute;
+            cursor: pointer;
+            right: 10px;
+            top: 5px;
+    
+            i {
+                // color: white;
+                font-size: 2rem;
+            }
+        }
+    
+        .new-image {
+            @extend %box;
+            top: 240px;
+            left: 760px;
+        }
+    
+        .new-title {
+            @extend %box;
+            top: 230px;
+            left: 1100px;
+        }
+    }
+}

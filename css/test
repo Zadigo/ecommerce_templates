@@ -1,0 +1,135 @@
+// $regular_font_size: 18px;
+
+
+
+// %base_content_font {
+//     font: {
+//         family: "Lato"
+//     };
+// }
+
+// PRIMARY COLORS
+
+$primary_color:#212121;
+
+$primary_black: #212121;
+
+$primary_white: white;
+
+$primary_grey: #fafafa;
+
+$discount_price_color: rgba($color: #a00037, $alpha: 1);
+
+$highlight_color: #c62828;
+
+// SECONDARY COLORS
+
+$secondary_color:#484848;
+
+// HELPERS
+
+%links {
+    color: $primary_white;
+    cursor: pointer;
+}
+
+%black_links {
+    @extend %links;
+    color: $primary_black;
+}
+
+// FONTS
+
+// $header_font: "Oswald", sans-serif;
+// $content_font: "Lato", sans-serif;
+
+// $box_padding: 1rem;
+
+$general_margin: 1.5rem;
+
+$regular_font_size: 18px;
+
+%base_header_font {
+    font: {
+        family: "Lato"
+    };
+}
+
+%header_font {
+    @extend %base_header_font;
+}
+
+%header_font_heavier {
+    @extend %header_font;
+}
+
+%base_content_font {
+    font: {
+        size: $regular_font_size
+    };
+}
+
+
+
+// @function add_to_regular_size($px) {
+//     @return $regular_font_size + $px;
+// }
+
+// @each $header in 3, 4 {
+//     h#{$header} {
+//         margin: 0;
+//         font: {
+//             family: $content_font;
+//             weight: 300;
+//         }
+//         @media only screen and (min-width: 301px) {
+//             font-size: add_to_regular_size(10px);
+//         }
+        
+//         @media only screen and (min-width: 993px) {
+//             font-size: add_to_regular_size(15px);
+//         }
+//     }
+// }
+
+
+// @mixin mid_weight_font($size) {
+//     font: {
+//         weight: 600;
+//         size: $size;
+//     }
+// }
+
+// @mixin header_font($size) {
+//     font: {
+//         size: $size;
+//         weight: 600;
+//     }
+// }
+
+// BANNERS
+
+$base_banner_color: #42a5f5;
+
+$base_promotional_banner_color: #00897b;
+
+
+// $secondary_black: #484848;
+
+// $discount_price_color: #a00037;
+
+
+// $z_depth_1: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+
+
+// $secondary_highlight_color: #66bb6a;
+
+
+
+// $color_a: #d81b60;
+// $color_b: #ff5c8d;
+// $color_c: #a00037;
+
+// $primary_grey: #fafafa;
+// $lighter_grey: #ffffff;
+// $dark_grey: #c7c7c7;

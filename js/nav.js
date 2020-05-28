@@ -27,14 +27,14 @@ var searchicontrigger = {
 var searchbar = {
     props: ["searchstate"],
     template: "\
-    <transition name='drop'>\
+    <!--<transition name='drop'>-->\
         <div v-if='searchstate' class='search-bar'>\
             <div class='wrapper'>\
                 <input @keypress.enter='dosearch' v-bind='searchvalue' class='browser-default' type='search' name='search' id='search' placeholder='Rechercher' autocomplete='off'>\
                 <i @click='triggerdropdown' class='material-icons'>close</i>\
             </div>\
         </div>\
-    </transition>\
+    <!--</transition>-->\
     ",
     data() {
         return {
@@ -46,9 +46,7 @@ var searchbar = {
             $.ajax({
                 type: "GET",
                 url: window.location.href = "/search.html",
-                success: function (response) {
-                    
-                }
+                success: function (response) {}
             });
         },
         triggerdropdown: function() {
@@ -61,16 +59,34 @@ var dropdownbar = {
     props: ["dropdownstate"],
     template: "\
     <transition name='drop'>\
-        <div v-if='dropdownstate' class='dropdown'>\
-            <div class='section'>\
-                <ul>\
-                    <li>Chaussures</li>\
-                    <li>Robes</li>\
-                    <li>Vêtements</li>\
-                </ul>\
+        <div v-if='dropdownstate' class='ecommerce-dropdown'>\
+            <div class='layout'>\
+                <div class='links'>\
+                    <div class='title'>Chaussures</div>\
+                    <ul>\
+                        <li><a href='#!'>Bottines</a></li>\
+                        <li><a href='#!'>Escarpins</a></li>\
+                    </ul>\
+                </div>\
+                <div class='links'>\
+                    <div class='title'>Vêtements</div>\
+                    <ul>\
+                        <li><a href='#!'>Bottines</a></li>\
+                        <li><a href='#!'>Escarpins</a></li>\
+                    </ul>\
+                </div>\
+                <div class='image linked-to'>\
+                    <a href='#!'>\
+                        <img src='../../assets/images/image3.jpg' alt=''>\
+                        <div class='link-title'>Sacs</div>\
+                    </a>\
+                    <a href='#!'>\
+                        <img src='../../assets/images/image3.jpg' alt=''>\
+                        <div class='link-title'>Cabas</div>\
+                    </a>\
+                    <img src='../../assets/images/image1.jpg' class='hide' alt=''>\
+                </div>\
             </div>\
-            <div class='section'>W</div>\
-            <div class='section'>C</div>\
         </div>\
     </transition>\
     ",
@@ -97,10 +113,18 @@ var navbar = new Vue({
         }
     },
     methods: {
+        fadebackground: function() {
+            if (this.$data.searchstate != true) {
+                $(".overlay").css({"display": "inherit"})
+            } else {
+                $(".overlay").css({"display": "none"})
+            }
+        },
         initiatedropdown: function(name) {
             if (name === "search") {
                 // setInterval(function() {$("#search").focus()}, 500)
                 this.$data.dropdownstate = false
+                // this.fadebackground()
                 this.$data.searchstate = !this.$data.searchstate
             }
 

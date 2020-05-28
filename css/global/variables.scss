@@ -1,35 +1,99 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Oswald:600,700&display=swap");
-
-$primary_color:#212121;
-$secondary_color:#484848;
-$highlight_color: #c62828;
-$secondary_highlight_color: #66bb6a;
-
-$discount_price_color: #a00037;
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,500&display=swap");
 
 
-$color_a: #d81b60;
-$color_b: #ff5c8d;
-$color_c: #a00037;
+$primary_white: white;
+
+$primary_black: #212121;
+
+$lighter_black: #424242;
 
 $primary_grey: #fafafa;
-$lighter_grey: #ffffff;
-$dark_grey: #c7c7c7;
 
-$box_padding: 1rem;
+$highlight_color: #c62828;
 
-$z_depth_1: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+$general_margin: 1.5rem;
 
-$header_font: "Oswald", sans-serif;
-$content_font: "Lato", sans-serif;
+
+
+
+// FONTS
+
+$regular_font_size: 14px;
+
+%header_font {
+    font: {
+        family: "Oswald";
+    }
+}
+
+%template_font {
+    font: {
+        family: "Lato"
+    };
+}
+
+%content_font_heavier {
+    @extend %template_font;
+    font-weight: 600;
+}
+
+%content_font_normal {
+    @extend %template_font;
+    font-weight: 500;
+}
+
+%content_font_lighter {
+    @extend %template_font;
+    font-weight: 300;
+}
+
+@mixin increase_normal_font_mixin($px) {
+    font: {
+        size: $regular_font_size + $px;
+        weight: 500;
+    }
+}
+
+@mixin content_font_mixin($px) {
+    font: {
+        family: "Lato";
+        size: $px;
+        weight: 300;
+    }
+}
+
+@mixin header_font_mixin($px) {
+    font: {
+        family: "Oswald";
+        size: $px;
+        weight: 500;
+    }
+}
+
+// HELPERS
 
 %links {
-    color: white;
+    color: $primary_white;
     cursor: pointer;
 }
 
 %black_links {
     @extend %links;
-    color: black;
+    color: $primary_black;
+}
+
+@function increase_font($px) {
+    @return $regular_font_size + $px;
+}
+
+@function decrease_font($px) {
+    @return $regular_font_size - $px;
+}
+
+@mixin border_mixin($top_and_bottom) {
+    @if ($top_and_bottom == "all") {
+        border-top: 1px solid $lighter_black;
+    }
+    border-bottom: 1px solid $lighter_black;
 }

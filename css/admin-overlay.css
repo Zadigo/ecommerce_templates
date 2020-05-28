@@ -1,0 +1,43 @@
+.admin-overlay .wrapper .new-image, .admin-overlay .wrapper .new-title {
+  position: absolute;
+  width: auto;
+}
+
+.admin-overlay .wrapper {
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 9999;
+}
+
+.admin-overlay .wrapper .panel-title {
+  font-weight: 600;
+  padding: 1rem;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+.admin-overlay .wrapper .close-button {
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  top: 5px;
+}
+
+.admin-overlay .wrapper .close-button i {
+  font-size: 2rem;
+}
+
+.admin-overlay .wrapper .new-image {
+  top: 240px;
+  left: 760px;
+}
+
+.admin-overlay .wrapper .new-title {
+  top: 230px;
+  left: 1100px;
+}
+/*# sourceMappingURL=admin-overlay.css.map */
